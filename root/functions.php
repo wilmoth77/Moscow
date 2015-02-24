@@ -92,10 +92,9 @@ add_action( 'widgets_init', '{%= prefix %}_widgets_init' );
  * Enqueue scripts and styles.
  */
 function {%= prefix %}_scripts() {
-	wp_enqueue_style( '{%= prefix %}-style', get_stylesheet_uri() );
-
-	/* Add Custom CSS */
-	wp_enqueue_style( 'custom-style', get_stylesheet_directory_uri() . '/public/css/custom.min.css' );
+        
+        /* Add Custom CSS */
+        wp_enqueue_style( 'base-style', get_stylesheet_directory_uri() . '/public/css/base.min.css' , false,filemtime( get_stylesheet_directory() . '/public/css/base.min.css' ), 'all' );
 
 	/* Add Bootstrap JS */
 	wp_enqueue_script( 'script-js', get_template_directory_uri() . '/public/js/script.min.js', array('jquery'), '', true );

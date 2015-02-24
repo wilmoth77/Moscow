@@ -10,8 +10,8 @@ module.exports = function(grunt) {
               compress: true,  // Minification
             },
             files: {
-              // Compile style.less into style.css
-              "./public/css/custom.min.css":"./assets/less/custom.less",
+              // Compile base.less into base.min.css
+              "./public/css/base.min.css":"./assets/less/base.less",
             }
         }
     },
