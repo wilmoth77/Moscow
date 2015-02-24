@@ -12,7 +12,7 @@ npm install -g grunt-init
 
 To clone the repository and add the template to grunt-init for automated project scaffolding run
 ```
-git clone git@github.com:wilmoth77/Moskow.git ~/.grunt-init/bootstrap_s
+git clone github.com:wilmoth77/Moskow.git ~/.grunt-init/bootstrap_s
 ```
 
 
