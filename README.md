@@ -18,11 +18,15 @@ git clone git@github.com:wilmoth77/Moskow.git ~/.grunt-init/bootstrap_s
 
 ## Installation
 
-Install a copy of WordPress on your localhost. Cd into your themes folder with
+Install a copy of WordPress on your localhost. Cd into your themes folder with and create a new, empty theme folder. 
 ```
 cd /var/www/YourWordPressInstallation/wp-content/themes
 ```
-and create a new, empty theme folder. 
+and create a new, empty theme folder.
+```
+mkdir NewThemeName
+```
+
 
 
 ### 1. Generate the template files in your empty theme folder
