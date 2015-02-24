@@ -3,11 +3,14 @@ module.exports = function(grunt) {
   // Initialize configuration object
     grunt.initConfig({
 
-    // Define configuration for each task
+     // Define configuration for each task
     less: {
         development: {
             options: {
               compress: true,  // Minification
+              sourceMap: true,
+              sourceMapFilename: 'base.css.map',
+              sourceMapRootpath: '/wp-content/themes/{%= prefix %}/'
             },
             files: {
               // Compile base.less into base.min.css
@@ -105,7 +108,10 @@ module.exports = function(grunt) {
         },
         less: {
           // Watched files
-          files: ['./assets/less/*.less'],  
+          files: [
+          '/assets/less/*.less',
+          'assets/less/**/*.less'
+          ],
           tasks: ['less'],
           options: {
           livereload: true
