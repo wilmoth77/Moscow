@@ -10,7 +10,7 @@ module.exports = function(grunt) {
               compress: true,  // Minification
               sourceMap: true,
               sourceMapFilename: 'base.css.map',
-              sourceMapRootpath: '/wp-content/themes/{%= prefix %}/'
+              sourceMapRootpath: '/wp-content/themes/{%= title %}/'
             },
             files: {
               // Compile base.less into base.min.css
