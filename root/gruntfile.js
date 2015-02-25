@@ -77,10 +77,10 @@ module.exports = function(grunt) {
       dynamic: {
         files: [{
             expand: true,
-            // Compresses all png / jpg / gif images
+            // Compresses all png / jpg / gif / ico images
             cwd: './assets/img/',
-            src: ['**/*.{png,jpg,gif}'],
-            dest:'./public/assets/img/'
+            src: ['**/*.{png,jpg,gif,ico}'],
+            dest:'./public/img/'
         }]
       }
     },
