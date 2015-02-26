@@ -38,6 +38,8 @@ module.exports = function(grunt) {
             files: {
               // Compile base.less into base.min.css
               "./public/css/base.min.css":"./assets/less/base.less",
+              // Compile wp-login.less into wp-login.min.css
+              "./public/css/wp-login.min.css":"./assets/less/layouts/pages/wp-login.less",
             }
         }
     },
@@ -144,11 +146,18 @@ module.exports = function(grunt) {
           livereload: true
           }
         }
-      }
+      },
+      
+      copy: {
+        main: {
+          src: './bower_components/dist/fonts/*',
+          dest: './public/fonts/',
+        },
+      },
 
 });
  // Compile tasks
-    grunt.registerTask('compile', ['concat', 'less', 'uglify', 'imagemin', 'modernizr', 'jshint']);
+    grunt.registerTask('compile', ['concat', 'less', 'uglify', 'imagemin', 'modernizr', 'jshint', 'copy']);
  // Set default task
     grunt.registerTask('default', ['watch']);
 };

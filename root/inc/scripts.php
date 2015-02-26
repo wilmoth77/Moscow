@@ -1,11 +1,9 @@
 <?php
 
 /**
- * {%= title %} functions and definitions
+ * {%= title %} Enqueue scripts and styles. Includes custom WP-Admin styles.
  *
  * @package {%= title %}
- * 
- * Enqueue scripts and styles.
  * 
  */
 
@@ -56,3 +54,23 @@ function {%= title %}_jquery_local_fallback($src, $handle = null) {
   return $src;
 }
 add_action('wp_head', '{%= title %}_jquery_local_fallback');
+
+/**
+ * Custom WP Admin Login Page
+ */
+// Reference custom login stylesheet
+function {%= title %}_login_stylesheet() {
+    wp_enqueue_style( 'custom-login', get_template_directory_uri() . '/public/css/wp-login.min.css' );
+  //wp_enqueue_script( 'custom-login', get_template_directory_uri() . '/pubic/js/wp-login.min.js' );
+}
+add_action( 'login_enqueue_scripts', '{%= title %}_login_stylesheet' );
+
+// Change logo link and title
+function wpc_url_login(){
+	return get_site_url();
+}
+function wpc_url_title(){
+        return get_bloginfo ( 'name' );
+ }
+add_filter('login_headerurl', 'wpc_url_login');
+add_filter('login_headertitle', 'wpc_url_title');

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * {%= title %} functions and definitions
+ * {%= title %} Configuration
  *
  * @package {%= title %}
  * 

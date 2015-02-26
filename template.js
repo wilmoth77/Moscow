@@ -1,6 +1,6 @@
 /**
- * bootstrap_s
- * https://github.com/4digits/bootstrap_s
+ * Moskow
+ * https://github.com/wilmoth77/Moskow
  *
  * Licensed under the MIT License
  */
@@ -8,13 +8,13 @@
 'use strict';
 
 // Basic template description
-exports.description = 'Create a WordPress theme based on Bootstrap and Underscores.';
+exports.description = 'Create a WordPress theme based on Underscores, Sage (Roots), and Bootstrap.';
 
 // Template-specific notes to be displayed before question prompts.
-exports.notes = 'In order to rename all prefixes in the Underscores template, please give your theme a new name.';
+exports.notes = 'In order to rename all prefixes in the template, please give your theme a new name.';
 
 // Template-specific notes to be displayed after the question prompts.
-exports.after = 'Your template is complete! Please run `npm install`, `bower install` and then `grunt compile` to set up all dependencies and Bootstrap.';
+exports.after = 'Your template is complete! Please run `npm install`, `bower install` and then `grunt compile` to set up all dependencies.';
 
 // Any existing file or directory matching this wildcard will cause a warning.
 exports.warnOn = '*';
@@ -23,15 +23,27 @@ exports.warnOn = '*';
 exports.template = function (grunt, init, done) {
 	init.process({}, [
 		// Prompt for these values.
-		init.prompt('title', 'bootstrap_s'),
+		init.prompt('title', 'Moskow'),
 		{
 			name   : 'prefix',
 			message: 'PHP function prefix (alpha and underscore characters only)',
-			default: 'bootstrap_s'
+			default: 'Moskow'
 		},
 	], function( err, props ) {
-		props.keywords = [];
+		props.keywords = ["underscores", "sage", "bootstrap"];
 		props.version = '1.0.0';
+                props.author = 'Jeff Wilmoth';
+                props.repo = {
+                    type: 'git',
+                    url: 'https://github.com/wilmoth77/Moskow'
+                },
+                props.repo = {
+                    type: 'licenses',
+                    url: 'http://opensource.org/licenses/MIT'
+                },
+                props.bugs = {
+                    url: 'http://www.google.com'
+                },
 		props.devDependencies = {
 			"grunt": "latest",
                 "load-grunt-tasks": "latest",
@@ -42,7 +54,8 @@ exports.template = function (grunt, init, done) {
     		"grunt-contrib-imagemin": "latest",
     		"grunt-contrib-watch": "latest",
                 "grunt-modernizr": "latest",
-                "grunt-contrib-jshint": "latest"
+                "grunt-contrib-jshint": "latest",
+                "grunt-contrib-copy": "latest"
 		}; 
 
 		// Sanitize names where we need to for PHP/JS

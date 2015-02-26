@@ -1,0 +1,86 @@
+/*
+Style the WordPress Admin Login Page with branded elements.
+*/
+/* 
+    Author     : jeff.wilmoth
+*/
+/* ==========================================================================
+   Common style across all brands
+   ========================================================================== */
+@fy-unit-1: 2px;
+@fy-unit-2: 0px;
+
+@fy-color-1: rgba(0, 0, 0, 0.3);
+@fy-color-2: #f9f9f9;
+@fy-color-3: #fff;
+
+body.login {
+  background: @fy-color-3;
+    form {
+      background: #f7f7f7;
+      -moz-box-shadow: @fy-unit-2 @fy-unit-1 @fy-unit-1 @fy-color-1;
+      -webkit-box-shadow: @fy-unit-2 @fy-unit-1 @fy-unit-1 @fy-color-1;
+      box-shadow: @fy-unit-2 @fy-unit-1 @fy-unit-1 @fy-color-1;
+    }
+    form.forgetmenot {
+      display: none;
+    }
+    form.input {
+      background: @fy-color-3;
+    }
+    form input[type=checkbox] {
+      background: @fy-color-3;
+    }
+    &.button-primary {
+      padding: 0 2@fy-unit-2 @fy-unit-1;
+      -webkit-border-radius: @fy-unit-2;
+      border-radius: @fy-unit-2;
+      -webkit-box-shadow: none;
+      box-shadow: none;
+    }
+    input#wp-submit {
+      width: 100%;
+      height: 35px;
+    }
+    #nav {
+      text-align: center;
+    }
+    #backtoblog {
+      text-align: center;
+    }
+    &.message {
+      background-color: @fy-color-2;
+    }
+    #login_error {
+      background-color: @fy-color-2;
+    }
+    input[type=text] {
+      background: @fy-color-3;
+    }
+}
+
+/* ==========================================================================
+   Brand Specific
+   ========================================================================== */
+@fy-color-1: #479818;
+@fy-color-2: #67ae3e;
+
+body.login {
+    div#login h1 a {
+      background-image: url(../img/admin-logo.png);
+      -webkit-background-size: 286px 65px;
+      background-size: 286px 65px;
+      width: 286px;
+    }
+    &.button-primary {
+      background: @fy-color-2;
+      border-color: @fy-color-2;
+    }
+    &.button-primary:hover {
+      background: @fy-color-1;
+      border-color: @fy-color-1;
+    }
+    &.message {
+      border-left: 4px solid @fy-color-2;
+    }
+}
