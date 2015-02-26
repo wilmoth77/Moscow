@@ -1,4 +1,8 @@
-module.exports = function(grunt) {
+module.exports = function (grunt) {
+    // load all grunt tasks matching the ['grunt-*', '@*/grunt-*'] patterns
+    require('load-grunt-tasks')(grunt);
+    // Show elapsed time
+    require('time-grunt')(grunt);
 
   // Initialize configuration object
     grunt.initConfig({
@@ -38,23 +42,12 @@ module.exports = function(grunt) {
           './bower_components/bootstrap/js/scrollspy.js',
           './bower_components/bootstrap/js/tab.js',         
           './bower_components/bootstrap/js/affix.js',
-          //'./assets/js/customizer.js',
-          //'./assets/js/navigation.js',
-          //'./assets/js/skip-link-focus-fix.js',
-          './assets/js/script.js'
+          './assets/js/plugins/*.js',
+          './assets/js/theme.js'
         ],
         // Concatenate script.js
         dest: './public/js/script.js',
       },
-      js_theme: {
-        src: [
-          './assets/js/theme.js'
-        ],
-        // Concatenate theme.js
-        dest: './public/js/theme.js',
-      },
-    },
-
     uglify: {
       options: {
         mangle: false  // Leaves function and variable names unchanged
@@ -66,13 +59,36 @@ module.exports = function(grunt) {
           './public/js/script.min.js': './public/js/script.js',
         }
       },
-      theme: {
-        files: {
-          // Minifies theme.js
-          './public/js/theme.min.js': './public/js/theme.js',
-        }
-      },
     },
+    
+    jshint: {
+      options: {
+        jshintrc: '.jshintrc'
+      },
+      all: [
+        'gruntfile.js',
+        'assets/js/*.js',
+        '!assets/js/script.js',
+      ]
+    },
+    
+    modernizr: {
+    dist: {
+        "devFile" : "./bower_components/modernizr/modernizr.js",
+        "outputFile" : "./public/js/modernizr.min.js",
+        files: {
+          'src': [
+            ['./public/js/script.min.js'],
+            ['./public/css/main.min.css']
+          ]
+        },
+        "extra" : {
+            "shiv" : false,
+        },
+        "uglify" : true,
+        "parseFiles" : true,
+    }
+},
 
     imagemin: {
       dynamic: {
@@ -87,16 +103,6 @@ module.exports = function(grunt) {
     },
 
     watch: {
-        js_script: {
-          files: [
-            // Watched files
-            './assets/js/script.js',
-            ],   
-          tasks: ['concat:js_script','uglify:script'],
-          options: {
-          livereload: true
-          }
-        },
         js_theme: {
           files: [
             // Watched files
@@ -135,19 +141,8 @@ module.exports = function(grunt) {
           }
         }
       }
-    });
+    }
 
-  // Load plugins
-  grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-less');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-imagemin');
-  
-  // Compile CSS and Javascript
-  grunt.registerTask('compile', ['concat', 'less', 'uglify', 'imagemin']);
-
-  // Set default task
-  grunt.registerTask('default', ['watch']);
-
-};
+});
+grunt.registerTask('default', []);
+}

@@ -34,11 +34,15 @@ exports.template = function (grunt, init, done) {
 		props.version = '1.0.0';
 		props.devDependencies = {
 			"grunt": "latest",
-    		"grunt-contrib-concat": "latest",
+                "load-grunt-tasks": "latest",
+                "time-grunt": "latest",
+                "grunt-contrib-concat": "latest",
     		"grunt-contrib-less": "latest",
     		"grunt-contrib-uglify": "latest",
     		"grunt-contrib-imagemin": "latest",
-    		"grunt-contrib-watch": "latest"
+    		"grunt-contrib-watch": "latest",
+                "grunt-modernizr": "latest",
+                "grunt-contrib-jshint": "latest"
 		}; 
 
 		// Sanitize names where we need to for PHP/JS

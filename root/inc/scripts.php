@@ -12,8 +12,7 @@
 function {%= title %}_scripts() {
     $assets = array(
       'css'       => '/public/css/base.min.css',
-      'bootstrap-js'      => '/public/js/script.min.js',
-      'theme-js'        => '/public/js/theme.min.js',
+      'script'    => '/public/js/script.min.js',
       'modernizr' => '/public/js/modernizr.js',
       'jquery'    => '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js'
     );
@@ -37,8 +36,7 @@ function {%= title %}_scripts() {
         
   wp_enqueue_script('modernizr', get_template_directory_uri() . $assets['modernizr'], array(), null, false);
   wp_enqueue_script('jquery');
-  wp_enqueue_script('bootstrap-js', get_template_directory_uri() . $assets['bootstrap-js'], array(), null, true);
-  wp_enqueue_script('theme-js', get_template_directory_uri() . $assets['theme-js'], array('bootstrap-js'), filemtime( get_template_directory() . $assets['theme-js'] ), true);
+  wp_enqueue_script('script', get_template_directory_uri() . $assets['script'], array(), filemtime( get_template_directory() . $assets['script'] ), true);
 }
 add_action( 'wp_enqueue_scripts', '{%= title %}_scripts' );
 
