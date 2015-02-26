@@ -53,16 +53,16 @@ module.exports = function(grunt) {
       },
     },
     uglify: {
-        options: {
-            mangle: false  // Leaves function and variable names unchanged
+      options: {
+        mangle: false  // Leaves function and variable names unchanged
       },
-      dist: {
-        script: {
+
+      script: {
         files: {
-          './public/js/script.min.js': [jsFileList]
+          // Minifies  script.js 
+          './public/js/script.min.js': './public/js/script.js',
         }
       }
-    }
     },
 
     jshint: {
