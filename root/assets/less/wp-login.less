@@ -1,42 +1,42 @@
-/*
-Style the WordPress Admin Login Page with branded elements.
-*/
-/* 
-    Author     : jeff.wilmoth
-*/
-/* ==========================================================================
-   Common style across all brands
-   ========================================================================== */
-@fy-unit-1: 2px;
-@fy-unit-2: 0px;
+@fy-unit-1: 0px;
+@fy-unit-2: 2px;
 
 @fy-color-1: rgba(0, 0, 0, 0.3);
-@fy-color-2: #f9f9f9;
-@fy-color-3: #fff;
+@fy-color-2: #2d374d;
+@fy-color-3: #f9f9f9;
+@fy-color-4: #181f2d;
+@fy-color-5: #fff;
 
-body.login {
-  background: @fy-color-3;
+body {
+  background: @fy-color-5;
+  &.login {
     form {
       background: #f7f7f7;
-      -moz-box-shadow: @fy-unit-2 @fy-unit-1 @fy-unit-1 @fy-color-1;
-      -webkit-box-shadow: @fy-unit-2 @fy-unit-1 @fy-unit-1 @fy-color-1;
-      box-shadow: @fy-unit-2 @fy-unit-1 @fy-unit-1 @fy-color-1;
+      -moz-box-shadow: @fy-unit-1 @fy-unit-2 @fy-unit-2 @fy-color-1;
+      -webkit-box-shadow: @fy-unit-1 @fy-unit-2 @fy-unit-2 @fy-color-1;
+      box-shadow: @fy-unit-1 @fy-unit-2 @fy-unit-2 @fy-color-1;
     }
-    form.forgetmenot {
+    form p.forgetmenot {
       display: none;
     }
-    form.input {
-      background: @fy-color-3;
+    form input.input {
+      background: @fy-color-5;
     }
     form input[type=checkbox] {
-      background: @fy-color-3;
+      background: @fy-color-5;
     }
-    &.button-primary {
-      padding: 0 2@fy-unit-2 @fy-unit-1;
-      -webkit-border-radius: @fy-unit-2;
-      border-radius: @fy-unit-2;
+    input.button-primary {
+      padding: 0 2@fy-unit-1 @fy-unit-2;
+      -webkit-border-radius: @fy-unit-1;
+      border-radius: @fy-unit-1;
       -webkit-box-shadow: none;
       box-shadow: none;
+      background: @fy-color-4;
+      border-color: @fy-color-4;
+    }
+    input.button-primary:hover {
+      background: @fy-color-2;
+      border-color: @fy-color-2;
     }
     input#wp-submit {
       width: 100%;
@@ -48,39 +48,21 @@ body.login {
     #backtoblog {
       text-align: center;
     }
-    &.message {
-      background-color: @fy-color-2;
+    p.message {
+      background-color: @fy-color-3;
+      border-left: 4px solid @fy-color-4;
     }
     #login_error {
-      background-color: @fy-color-2;
+      background-color: @fy-color-3;
     }
     input[type=text] {
-      background: @fy-color-3;
+      background: @fy-color-5;
     }
-}
-
-/* ==========================================================================
-   Brand Specific
-   ========================================================================== */
-@fy-color-4: #479818;
-@fy-color-5: #67ae3e;
-
-body.login {
     div#login h1 a {
       background-image: url(../img/admin-logo.png);
       -webkit-background-size: 286px 65px;
       background-size: 286px 65px;
       width: 286px;
     }
-    &.button-primary {
-      background: @fy-color-5;
-      border-color: @fy-color-5;
-    }
-    &.button-primary:hover {
-      background: @fy-color-4;
-      border-color: @fy-color-4;
-    }
-    &.message {
-      border-left: 4px solid @fy-color-5;
-    }
+  }
 }
