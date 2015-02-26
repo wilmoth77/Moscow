@@ -1,8 +1,26 @@
-module.exports = function (grunt) {
-    // load all grunt tasks matching the ['grunt-*', '@*/grunt-*'] patterns
-    require('load-grunt-tasks')(grunt);
-    // Show elapsed time
-    require('time-grunt')(grunt);
+'use strict';
+module.exports = function(grunt) {
+  // Load all tasks
+  require('load-grunt-tasks')(grunt);
+  // Show elapsed time
+  require('time-grunt')(grunt);
+  
+  var jsFileList = [
+    './bower_components/bootstrap/js/transition.js',
+    './bower_components/bootstrap/js/alert.js',
+    './bower_components/bootstrap/js/button.js',
+    './bower_components/bootstrap/js/carousel.js',
+    './bower_components/bootstrap/js/collapse.js',
+    './bower_components/bootstrap/js/dropdown.js',
+    './bower_components/bootstrap/js/modal.js',
+    './bower_components/bootstrap/js/tooltip.js',
+    './bower_components/bootstrap/js/popover.js',
+    './bower_components/bootstrap/js/scrollspy.js',
+    './bower_components/bootstrap/js/tab.js',         
+    './bower_components/bootstrap/js/affix.js',
+    './assets/js/plugins/*.js',
+    './assets/js/theme.js'
+  ];
 
   // Initialize configuration object
     grunt.initConfig({
@@ -29,38 +47,24 @@ module.exports = function (grunt) {
         separator: ';',
       },
       js_script: {
-        src: [
-          './bower_components/bootstrap/js/transition.js',
-          './bower_components/bootstrap/js/alert.js',
-          './bower_components/bootstrap/js/button.js',
-          './bower_components/bootstrap/js/carousel.js',
-          './bower_components/bootstrap/js/collapse.js',
-          './bower_components/bootstrap/js/dropdown.js',
-          './bower_components/bootstrap/js/modal.js',
-          './bower_components/bootstrap/js/tooltip.js',
-          './bower_components/bootstrap/js/popover.js',
-          './bower_components/bootstrap/js/scrollspy.js',
-          './bower_components/bootstrap/js/tab.js',         
-          './bower_components/bootstrap/js/affix.js',
-          './assets/js/plugins/*.js',
-          './assets/js/theme.js'
-        ],
+        src: [jsFileList],
         // Concatenate script.js
         dest: './public/js/script.js',
       },
-    uglify: {
-      options: {
-        mangle: false  // Leaves function and variable names unchanged
-      },
-
-      script: {
-        files: {
-          // Minifies  script.js 
-          './public/js/script.min.js': './public/js/script.js',
-        }
-      },
     },
-    
+    uglify: {
+        options: {
+            mangle: false  // Leaves function and variable names unchanged
+      },
+      dist: {
+        script: {
+        files: {
+          './public/js/script.min.js': [jsFileList]
+        }
+      }
+    }
+    },
+
     jshint: {
       options: {
         jshintrc: '.jshintrc'
@@ -141,8 +145,10 @@ module.exports = function (grunt) {
           }
         }
       }
-    }
 
 });
-grunt.registerTask('default', []);
-}
+ // Compile tasks
+    grunt.registerTask('compile', ['concat', 'less', 'uglify', 'imagemin', 'modernizr', 'jshint']);
+ // Set default task
+    grunt.registerTask('default', ['watch']);
+};
