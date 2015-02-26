@@ -109,12 +109,13 @@ module.exports = function(grunt) {
     },
 
     watch: {
-        js_theme: {
+        js: {
+          // Watched files
           files: [
-            // Watched files
-            './assets/js/theme.js',
-            ],   
-          tasks: ['concat:js_theme','uglify:theme'],
+            jsFileList,
+            '<%= jshint.all %>'
+          ],
+          tasks: ['jshint', 'concat'],
           options: {
           livereload: true
           }

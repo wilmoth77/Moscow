@@ -26,6 +26,9 @@ var Moskow = {
   common: {
     init: function() {
       // JavaScript to be fired on all pages
+      $(function () {
+        $('[data-toggle="popover"]').popover({ trigger: "focus" });
+      });
     }
   },
   // Home page
