@@ -11,7 +11,7 @@ function {%= title %}_scripts() {
     $assets = array(
       'css'       => '/public/css/base.min.css',
       'script'    => '/public/js/script.min.js',
-      'modernizr' => '/public/js/modernizr.js',
+      'modernizr' => '/public/js/modernizr.min.js',
       'jquery'    => '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js'
     );
     
@@ -61,7 +61,7 @@ add_action('wp_head', '{%= title %}_jquery_local_fallback');
 // Reference custom login stylesheet
 function {%= title %}_login_stylesheet() {
     wp_enqueue_style( 'custom-login', get_template_directory_uri() . '/public/css/wp-login.min.css' );
-  //wp_enqueue_script( 'custom-login', get_template_directory_uri() . '/pubic/js/wp-login.min.js' );
+  //wp_enqueue_script( 'custom-login', get_template_directory_uri() . '/public/js/wp-login.min.js' );
 }
 add_action( 'login_enqueue_scripts', '{%= title %}_login_stylesheet' );
 

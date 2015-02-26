@@ -32,7 +32,7 @@ mkdir NewThemeName
 ### 1. Generate the template files in your empty theme folder
 
 ```
-grunt-init bootstrap_s
+grunt-init moskow
 ```
 You should give your theme a title and function-prefix (e.g. MyTheme / mytheme).
 

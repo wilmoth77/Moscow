@@ -36,10 +36,9 @@ module.exports = function(grunt) {
               sourceMapURL: '/wp-content/themes/{%= title %}/public/css/base.css.map'
             },
             files: {
-              // Compile base.less into base.min.css
+              // Compile .less into .min.css
               "./public/css/base.min.css":"./assets/less/base.less",
-              // Compile wp-login.less into wp-login.min.css
-              "./public/css/wp-login.min.css":"./assets/less/layouts/pages/wp-login.less",
+              "./public/css/wp-login.min.css":"./assets/less/wp-login.less",
             }
         }
     },
@@ -63,6 +62,7 @@ module.exports = function(grunt) {
         files: {
           // Minifies  script.js 
           './public/js/script.min.js': './public/js/script.js',
+        //'./public/js/wp-login.min.js': './assets/js/wp-login.js',
         }
       }
     },
