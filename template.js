@@ -68,7 +68,7 @@ exports.template = function (grunt, init, done) {
 		console.log( files );
 
 		// Actually copy and process files
-		init.copyAndProcess(files, props, {noProcess: 'screenshot.png'});
+		init.copyAndProcess(files, props, {noProcess: ['*.{png,gif,jpg,ico}', '/assets/img/favicon.ico']});
 
 		// Generate package.json file
 		init.writePackageJSON( 'package.json', props );
