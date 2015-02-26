@@ -32,7 +32,7 @@ module.exports = function(grunt) {
               compress: true,  // Minification
               sourceMap: true,
               sourceMapFilename: 'public/css/base.css.map',
-              sourceMapRootpath: '/wp-content/themes/{%= title %}/'
+              sourceMapRootpath: '/wp-content/themes/{%= title %}/',
               sourceMapURL: '/wp-content/themes/{%= title %}/public/css/base.css.map'
             },
             files: {
