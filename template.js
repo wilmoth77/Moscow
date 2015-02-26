@@ -30,20 +30,10 @@ exports.template = function (grunt, init, done) {
 			default: 'Moskow'
 		},
 	], function( err, props ) {
-		props.keywords = ["underscores", "sage", "bootstrap"];
+		props.keywords = ['Underscores','Sage(Roots)','Bootstrap'];
 		props.version = '1.0.0';
-                props.author = 'Jeff Wilmoth';
-                props.repo = {
-                    type: 'git',
-                    url: 'https://github.com/wilmoth77/Moskow'
-                },
-                props.repo = {
-                    type: 'licenses',
-                    url: 'http://opensource.org/licenses/MIT'
-                },
-                props.bugs = {
-                    url: 'http://www.google.com'
-                },
+                props.author_name = 'Jeff Wilmoth';
+                props.repository = 'https://github.com/wilmoth77/Moskow';
 		props.devDependencies = {
 			"grunt": "latest",
                 "load-grunt-tasks": "latest",
