@@ -1,4 +1,4 @@
-Moskow
+moscow
 ===========
 
 >WordPress starter theme based on Underscores using Bootstrap with LESS for responsiveness, Grunt.js for automation and Bower for front end package management.
@@ -12,7 +12,7 @@ npm install -g grunt-init
 
 To clone the repository and add the template to grunt-init for automated project scaffolding run
 ```
-git clone github:wilmoth77/Moskow.git ~/.grunt-init/moskow
+git clone github:wilmoth77/moscow.git ~/.grunt-init/moscow
 ```
 
 
@@ -32,7 +32,7 @@ mkdir NewThemeName
 ### 1. Generate the template files in your empty theme folder
 
 ```
-grunt-init moskow
+grunt-init moscow
 ```
 You should give your theme a title and function-prefix (e.g. MyTheme / mytheme).
 
