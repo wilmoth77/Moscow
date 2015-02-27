@@ -24,83 +24,85 @@ module.exports = function(grunt) {
 
   // Initialize configuration object
     grunt.initConfig({
-
-     // Define configuration for each task
+  
+  // Less tasks
     less: {
         development: {
-            options: {
-              compress: true,  // Minification
-              sourceMap: true,
-              sourceMapFilename: 'public/css/base.css.map',
-              sourceMapRootpath: '/wp-content/themes/{%= title %}/',
-              sourceMapURL: '/wp-content/themes/{%= title %}/public/css/base.css.map'
-            },
             files: {
-              // Compile .less into .min.css
-              "./public/css/base.min.css":"./assets/less/base.less",
-              "./public/css/wp-login.min.css":"./assets/less/wp-login.less",
-            }
+              "./assets/css/wp-login.css":"./assets/less/wp-login.less",
+              "./assets/css/base.css":"./assets/less/base.less",
+          }
+        },
+        production: {
+            files: {
+                "./public/css/wp-login.min.css":"./assets/less/wp-login.less",
+                "./public/css/base.min.css":"./assets/less/base.less",
+            },
+      // Because I ref /public css files while developing, sourceMap is done here
+      // Set to false and compile for live site
+            options: {
+                compress: true,
+                sourceMap: true,
+                sourceMapFilename: 'assets/css/base.css.map',
+                sourceMapRootpath: '/wp-content/themes/{%= title %}/',
+                sourceMapURL: '/wp-content/themes/{%= title %}/assets/css/base.css.map'
+            },
+            plugins: [
+                new (require('less-plugin-autoprefix'))({browsers: ["> 5%, last 2 versions"]})
+              ],
         }
     },
     
+  // Concatenate and minify the js
     concat: {
-      options: {
-        separator: ';',
+        options: {
+          separator: ';',
+        },
+        development: {
+          src: [jsFileList],
+          dest: './assets/js/script.js',
+        },
       },
-      js_script: {
-        src: [jsFileList],
-        // Concatenate script.js
-        dest: './public/js/script.js',
-      },
-    },
-    uglify: {
-      options: {
-        mangle: false  // Leaves function and variable names unchanged
-      },
-
-      script: {
-        files: {
-          // Minifies  script.js 
-          './public/js/script.min.js': './public/js/script.js',
-        //'./public/js/wp-login.min.js': './assets/js/wp-login.js',
+      uglify: {
+        Production: {
+          files: {
+            './public/js/script.min.js': './assets/js/script.js',
+          }
         }
-      }
-    },
-
-    jshint: {
-      options: {
-        jshintrc: '.jshintrc'
       },
-      all: [
-        'gruntfile.js',
-        'assets/js/*.js',
-        '!assets/js/script.js',
-      ]
+      jshint: {
+        options: {
+          jshintrc: '.jshintrc'
+        },
+        all: [
+          'gruntfile.js',
+          'assets/js/*.js',
+          '!assets/js/script.js',
+        ]
     },
     
     modernizr: {
-    dist: {
-        "devFile" : "./bower_components/modernizr/modernizr.js",
-        "outputFile" : "./public/js/modernizr.min.js",
-        files: {
-          'src': [
-            ['./public/js/script.min.js'],
-            ['./public/css/main.min.css']
-          ]
-        },
-        "extra" : {
-            "shiv" : false,
-        },
-        "uglify" : true,
-        "parseFiles" : true,
-    }
-},
+        Production: {
+            "devFile" : "./bower_components/modernizr/modernizr.js",
+            "outputFile" : "./public/js/modernizr.min.js",
+            files: {
+              'src': [
+                ['./public/js/script.min.js'],
+                ['./public/css/main.min.css']
+              ]
+            },
+            "extra" : {
+                "shiv" : false,
+            },
+            "uglify" : true,
+            "parseFiles" : true,
+        }
+    },
 
     imagemin: {
       dynamic: {
         files: [{
             expand: true,
-            // Compresses all png / jpg / gif / ico images
             cwd: './assets/img/',
             src: ['**/*.{png,jpg,gif,ico}'],
             dest:'./public/img/'
@@ -110,51 +112,50 @@ module.exports = function(grunt) {
 
     watch: {
         js: {
-          // Watched files
           files: [
             jsFileList,
             '<%= jshint.all %>'
           ],
           tasks: ['jshint', 'concat'],
-          options: {
-          livereload: true
-          }
         },
         less: {
-          // Watched files
           files: [
-          '/assets/less/*.less',
-          'assets/less/**/*.less'
+          './assets/less/*.less',
+          './assets/less/**/*.less'
           ],
           tasks: ['less'],
-          options: {
-          livereload: true
-          }
         },
         images: {
-          // Watched files
           files: ['./assets/img/**/*.{png,jpg,gif}'], 
           tasks: ['imagemin'],
-          options: {
-          livereload: true
-          }
         },
         html: {
-          // Watch php for changes
           files: ['**/*.php'],
           tasks: [],
-          options: {
-          livereload: true
-          }
-        }
-      },
-      
-      copy: {
-        main: {
-          src: './bower_components/dist/fonts/*',
-          dest: './public/fonts/',
         },
-      },
+        livereload: {
+        options: {
+          livereload: true
+        },
+        files: [
+          '**/*.php',
+          './assets/css/base.css',
+          './assets/js/*.js'
+        ]
+      }
+    },
+      
+    copy: {
+        main: {
+          files: [
+              {expand: true, 
+                  cwd: './bower_components/bootstrap/dist/fonts/', 
+                  src: ['*.*'], 
+                  dest: './public/fonts'
+              },
+          ],
+        }
+    },
 
 });
  // Compile tasks

@@ -45,7 +45,8 @@ exports.template = function (grunt, init, done) {
     		"grunt-contrib-watch": "latest",
                 "grunt-modernizr": "latest",
                 "grunt-contrib-jshint": "latest",
-                "grunt-contrib-copy": "latest"
+                "grunt-contrib-copy": "latest",
+                "less-plugin-autoprefix": "latest",
 		}; 
 
 		// Sanitize names where we need to for PHP/JS
