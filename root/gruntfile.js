@@ -82,21 +82,20 @@ module.exports = function(grunt) {
     },
     
     modernizr: {
-        Production: {
-            "devFile" : "./bower_components/modernizr/modernizr.js",
-            "outputFile" : "./public/js/modernizr.min.js",
-            files: {
-              'src': [
-                ['./public/js/script.min.js'],
-                ['./public/css/main.min.css']
-              ]
-            },
-            "extra" : {
-                "shiv" : false,
-            },
-            "uglify" : true,
-            "parseFiles" : true,
-        }
+      dist: {
+        "dest" : "./public/js/modernizr.min.js",
+        "parseFiles": true,
+        "customTests": [],
+        "devFile": "./bower_components/modernizr/modernizr.js",
+        //"outputFile": "./public/js/modernizr-output.js",
+        "tests": [
+          // Tests
+        ],
+        "options": [
+          "setClasses"
+        ],
+        "uglify": true
+      }
     },
 
     imagemin: {
